@@ -38,8 +38,3 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 ## Differences compared to building by the LineageOS way
 
 - none (as far as I know)
-
-## Roadblocks for macOS support
-
-- `sed` commands might not work.
-- I don't have a macOS machine to test on
