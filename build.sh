@@ -70,25 +70,25 @@ download_sources() {
     [ ! -d $workdir/build ] && mkdir $workdir/build
 
     [ $need_clang = "true" ] && download_extract_and_clean \
-                                "prebuilts/clang/kernel/linux-x86/clang-r416183b" \
-							    "clang-$lineageos_version.tar.gz" \
-							    "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b/archive/refs/heads/$lineageos_version.tar.gz" \
+                                "prebuilts/clang/kernel/linux-x86/clang-$clang_version" \
+							    "clang-$clang_branch.tar.gz" \
+							    "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-$clang_version/archive/refs/heads/$clang_branch.tar.gz" \
 							    "github" \
-							    "android_prebuilts_clang_kernel_linux-x86_clang-r416183b-$lineageos_version"
+							    "android_prebuilts_clang_kernel_linux-x86_clang-$clang_version-$clang_branch"
 
     [ $need_aarch64_gcc = "true" ] && download_extract_and_clean \
-                                      "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" \
-	    							  "aarch64-gcc-$older_lineageos_version.tar.gz" \
-								      "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9/archive/refs/heads/$older_lineageos_version.tar.gz" \
+                                      "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-$gcc_version" \
+	    							  "aarch64-gcc-$gcc_branch.tar.gz" \
+								      "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-$gcc_version/archive/refs/heads/$gcc_branch.tar.gz" \
 								      "github" \
-								      "android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9-$older_lineageos_version"
+								      "android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-$gcc_version-$gcc_branch"
 
     [ $need_arm_gcc = "true" ] && download_extract_and_clean \
-                                  "prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" \
-							      "arm-gcc-$older_lineageos_version.tar.gz" \
-							      "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9/archive/refs/heads/$older_lineageos_version.tar.gz" \
+                                  "prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-$gcc_version" \
+							      "arm-gcc-$gcc_branch.tar.gz" \
+							      "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-$gcc_version/archive/refs/heads/$gcc_branch.tar.gz" \
 							      "github" \
-							      "android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9-$older_lineageos_version"
+							      "android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-$gcc_version-$gcc_branch"
 
     [ $need_tools_lineage = "true" ] && download_extract_and_clean \
                                         "prebuilts/tools-lineage" \
@@ -109,6 +109,12 @@ download_sources() {
 	    					   "misc-$aosp_version.tar.gz" \
 							   "https://android.googlesource.com/platform/prebuilts/misc/+archive/refs/tags/$aosp_version.tar.gz" \
 							   "googlesource"
+
+    [ $need_kernel_build_tools = "true" ] && download_extract_and_clean \
+                                             "prebuilts/kernel-build-tools" \
+	    					                 "kernel-build-tools-$alt_aosp_version.tar.gz" \
+							                 "https://android.googlesource.com/kernel/prebuilts/build-tools/+archive/refs/tags/$alt_aosp_version.tar.gz" \
+							                 "googlesource"
 
     download_kernel
 
